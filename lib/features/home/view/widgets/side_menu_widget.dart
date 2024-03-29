@@ -11,15 +11,15 @@ import 'package:velocity_x/velocity_x.dart';
 
 class SideMenuData {
   final menu = <MenuModel>[
-    MenuModel(icon: Icons.space_dashboard_rounded, title: 'Dashboard'),
-    MenuModel(icon: Icons.person, title: 'Students'),
-    MenuModel(icon: Icons.local_library_outlined, title: 'Library'),
-    MenuModel(icon: Icons.account_balance_outlined, title: 'Account'),
-    MenuModel(icon: Icons.photo_filter_sharp, title: 'Attendace'),
-    MenuModel(icon: Icons.file_present_outlined, title: 'Notes'),
-    MenuModel(icon: Icons.file_open_outlined, title: 'Notice'),
-    MenuModel(icon: Icons.settings, title: 'Settings'),
-    MenuModel(icon: Icons.logout, title: 'Logout'),
+    MenuModel(icon: Icons.space_dashboard_rounded, label: 'Dashboard'),
+    MenuModel(icon: Icons.person, label: 'Students'),
+    MenuModel(icon: Icons.local_library_outlined, label: 'Library'),
+    MenuModel(icon: Icons.account_balance_outlined, label: 'Account'),
+    MenuModel(icon: Icons.photo_filter_sharp, label: 'Attendace'),
+    MenuModel(icon: Icons.file_present_outlined, label: 'Notes'),
+    MenuModel(icon: Icons.file_open_outlined, label: 'Notice'),
+    MenuModel(icon: Icons.settings, label: 'Settings'),
+    MenuModel(icon: Icons.logout, label: 'Logout'),
   ];
 }
 
@@ -68,7 +68,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
       child: InkWell(
         onTap: () => setState(() {
           HomeKeys.selectedIndex = index;
-          if (data.menu[index].title == 'Settings') {
+          if (data.menu[index].label == 'Settings') {
             context.navigateTo(const SettingsRoute());
           }
         }),
@@ -79,7 +79,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
               color: isSelected ? AppColors.purple500 : AppColors.grey500,
             ).pSymmetric(h: 13, v: 7),
             AppSmallText(
-              text: data.menu[index].title,
+              text: data.menu[index].label,
               fontSize: 16,
               color: isSelected ? AppColors.purple500 : AppColors.grey500,
               fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,

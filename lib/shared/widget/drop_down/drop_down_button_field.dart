@@ -11,6 +11,7 @@ class DropDownButtonField extends StatefulWidget {
   final String hintText;
   final List<String> dropDownItem;
   final Widget? prefixIcon;
+  final Color hintTextColor;
   const DropDownButtonField({
     super.key,
     required this.name,
@@ -18,6 +19,7 @@ class DropDownButtonField extends StatefulWidget {
     required this.hintText,
     required this.dropDownItem,
     this.prefixIcon,
+    this.hintTextColor = AppColors.grey700,
   });
 
   @override
@@ -57,14 +59,14 @@ class _DropDownButtonFieldState extends State<DropDownButtonField> {
         size: 30,
         color: AppColors.kPrimaryButtonColor,
       ),
-      dropdownColor: AppColors.green200,
+      dropdownColor: AppColors.green600,
       decoration: InputDecoration(
         filled: true,
         hintText: widget.hintText,
         labelText: widget.hintText,
         labelStyle: GoogleFonts.ubuntu(
           fontSize: 14,
-          color: AppColors.green200,
+          color: widget.hintTextColor,
           letterSpacing: 0.5,
           fontWeight: FontWeight.w600,
         ),

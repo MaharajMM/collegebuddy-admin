@@ -1,5 +1,6 @@
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/padding/app_padding.dart';
+import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
 import 'package:college_buddy_admin/data/models/bar_graph_model.dart';
 import 'package:college_buddy_admin/data/models/graph_model.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/activity_details_card.dart';
@@ -10,8 +11,8 @@ import 'package:velocity_x/velocity_x.dart';
 class BarGraphData {
   final data = [
     BarGraphModel(
-      color: Colors.amber,
-      label: 'Activity Level',
+      color: AppColors.kyellow1,
+      label: 'Collections',
       graph: [
         GraphModel(x: 0, y: 8),
         GraphModel(x: 1, y: 10),
@@ -19,12 +20,12 @@ class BarGraphData {
         GraphModel(x: 3, y: 4),
         GraphModel(x: 4, y: 4),
         GraphModel(x: 5, y: 6),
-        GraphModel(x: 6, y: 8),
+        // GraphModel(x: 6, y: 8),
       ],
     ),
     BarGraphModel(
-      color: Colors.pink[50]!,
-      label: 'Nutrition Bar',
+      color: AppColors.green500,
+      label: 'Fees',
       graph: [
         GraphModel(x: 0, y: 8),
         GraphModel(x: 1, y: 10),
@@ -32,12 +33,12 @@ class BarGraphData {
         GraphModel(x: 3, y: 6),
         GraphModel(x: 4, y: 5),
         GraphModel(x: 5, y: 7),
-        GraphModel(x: 6, y: 8),
+        // GraphModel(x: 6, y: 8),
       ],
     ),
     BarGraphModel(
       color: Colors.blue,
-      label: 'Hydration Level',
+      label: 'Expenses',
       graph: [
         GraphModel(x: 0, y: 7),
         GraphModel(x: 1, y: 10),
@@ -45,11 +46,11 @@ class BarGraphData {
         GraphModel(x: 3, y: 6),
         GraphModel(x: 4, y: 4),
         GraphModel(x: 5, y: 7),
-        GraphModel(x: 6, y: 8),
+        // GraphModel(x: 6, y: 8),
       ],
     ),
   ];
-  final label = ['M', 'T', 'W', 'T', 'F', 'S', 'S '];
+  final label = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'];
 }
 
 class BarGraphCard extends StatelessWidget {
@@ -71,15 +72,12 @@ class BarGraphCard extends StatelessWidget {
         itemBuilder: (context, index) {
           return CustomCardWidget(
             padding: AppPadding.kQuatPad,
+            color: AppColors.green100.withOpacity(0.4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  barGraphData.data[index].label,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
+                AppSmallText(
+                  text: barGraphData.data[index].label,
                 ).p8(),
                 12.heightBox,
                 Expanded(
@@ -102,12 +100,10 @@ class BarGraphCard extends StatelessWidget {
                         sideTitles: SideTitles(
                           showTitles: true,
                           getTitlesWidget: (value, meta) {
-                            return Text(
-                              barGraphData.label[value.toInt()],
-                              style: const TextStyle(
-                                  color: AppColors.grey500,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500),
+                            return AppSmallText(
+                              text: barGraphData.label[value.toInt()],
+                              color: AppColors.grey500,
+                              fontSize: 11,
                             ).pOnly(top: 5);
                           },
                         ),

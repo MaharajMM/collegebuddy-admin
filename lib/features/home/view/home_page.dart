@@ -1,10 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
-import 'package:college_buddy_admin/features/home/view/widgets/dashboard_widget.dart';
+import 'package:college_buddy_admin/features/home/view/sub-screen/dashboard_widget.dart';
+import 'package:college_buddy_admin/features/home/view/widgets/side_bar_widget.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/side_menu_widget.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/summary_widget.dart';
+import 'package:college_buddy_admin/features/settings/view/settings_page.dart';
 import 'package:college_buddy_admin/shared/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:sidebarx/sidebarx.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -24,6 +27,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final _controller = SidebarXController(selectedIndex: 0, extended: true);
   @override
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
@@ -46,16 +50,89 @@ class _HomeViewState extends State<HomeView> {
         child: Row(
           children: [
             if (isDesktop)
-              const Expanded(
+              Expanded(
                 flex: 2,
-                child: SizedBox(
-                  child: SideMenuWidget(),
-                ),
+                child: SideBarWidget(controller: _controller),
+                // SizedBox(
+                //   child: SideMenuWidget(),
+                // ),
               ),
-            const Expanded(
-              flex: 10,
-              child: DashBoardWidget(),
-            ),
+
+            Expanded(
+                flex: 10,
+                child: Center(
+                  child: AnimatedBuilder(
+                    animation: _controller,
+                    builder: (context, child) {
+                      switch (_controller.selectedIndex) {
+                        case 0:
+                          return const DashBoardWidget();
+                        case 1:
+                          return const Center(
+                            child: Text(
+                              'Search',
+                              style: TextStyle(color: AppColors.green100, fontSize: 40),
+                            ),
+                          );
+                        case 2:
+                          return const Center(
+                            child: Text(
+                              'Settings',
+                              style: TextStyle(color: AppColors.green100, fontSize: 40),
+                            ),
+                          );
+                        case 3:
+                          return const Center(
+                            child: Text(
+                              'Theme',
+                              style: TextStyle(color: AppColors.green100, fontSize: 40),
+                            ),
+                          );
+                        case 4:
+                          return const Center(
+                            child: Text(
+                              'Theme',
+                              style: TextStyle(color: AppColors.green100, fontSize: 40),
+                            ),
+                          );
+                        case 5:
+                          return const Center(
+                            child: Text(
+                              'Theme',
+                              style: TextStyle(color: AppColors.green100, fontSize: 40),
+                            ),
+                          );
+                        case 6:
+                          return const Center(
+                            child: Text(
+                              'Theme',
+                              style: TextStyle(color: AppColors.green100, fontSize: 40),
+                            ),
+                          );
+                        case 7:
+                          return const SettingsPage();
+                        case 8:
+                          return const Center(
+                            child: Text(
+                              'Theme',
+                              style: TextStyle(color: AppColors.green100, fontSize: 40),
+                            ),
+                          );
+                        default:
+                          return const Center(
+                            child: Text(
+                              'Home',
+                              style: TextStyle(color: AppColors.green100, fontSize: 40),
+                            ),
+                          );
+                      }
+                    },
+                  ),
+                ))
+            // const Expanded(
+            //   flex: 10,
+            //   child: DashBoardWidget(),
+            // ),
           ],
         ),
       ),

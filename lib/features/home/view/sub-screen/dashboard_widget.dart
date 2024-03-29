@@ -2,6 +2,8 @@ import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/padding/app_padding.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/activity_details_card.dart';
+import 'package:college_buddy_admin/features/home/view/widgets/attendance_and_exam_widget.dart';
+import 'package:college_buddy_admin/features/home/view/widgets/bar_graph_card.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/header_widget.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/routine_widget.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/summary_widget.dart';
@@ -25,7 +27,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
         Container(
           decoration: BoxDecoration(
             border: const Border(bottom: BorderSide(color: AppColors.grey300)),
-            color: Colors.pink[50]!.withOpacity(0.2),
+            color: AppColors.green100.withOpacity(0.1),
           ),
           child: const HeaderWidget(),
         ),
@@ -55,11 +57,12 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                         ).pOnly(bottom: 20),
                         const ActivityDetailsCard(),
                         20.heightBox,
-                        const RoutineWidget(),
+                        const RoutineAndLibraryWidget(),
+                        20.heightBox,
+                        const AttendanceAndExamWidget(),
+                        20.heightBox,
                         // const LineChartCard(),
-                        // 20.heightBox,
-                        // const BarGraphCard(),
-                        // 20.heightBox,
+                        const BarGraphCard(),
                         // if (Responsive.isTablet(context)) const SummaryWidget()
                       ],
                     ),

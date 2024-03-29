@@ -34,7 +34,7 @@ class HeaderWidget extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: AppColors.purple50,
+                      fillColor: AppColors.green100.withOpacity(0.4),
                       enabledBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.transparent),
                       ),
@@ -61,7 +61,7 @@ class HeaderWidget extends StatelessWidget {
                       ),
                       suffixIcon: const Icon(
                         Icons.search,
-                        color: AppColors.purple500,
+                        color: AppColors.green500,
                         size: 30,
                       ),
                     ),
@@ -101,19 +101,19 @@ class HeaderWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 25,
-                  backgroundColor: AppColors.purple50,
-                  child: Icon(
+                  backgroundColor: AppColors.green100.withOpacity(0.4),
+                  child: const Icon(
                     Icons.notifications_none_rounded,
                     color: AppColors.kprimaryBlack,
                     size: 30,
                   ),
                 ),
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 25,
-                  backgroundColor: AppColors.purple50,
-                  child: Icon(
+                  backgroundColor: AppColors.green100.withOpacity(0.4),
+                  child: const Icon(
                     Icons.mark_email_unread_outlined,
                     color: AppColors.kprimaryBlack,
                     size: 30,
@@ -123,7 +123,7 @@ class HeaderWidget extends StatelessWidget {
                   padding: AppPadding.kHalfPad,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: AppColors.purple50,
+                    color: AppColors.green100.withOpacity(0.4),
                   ),
                   child: Row(
                     children: [

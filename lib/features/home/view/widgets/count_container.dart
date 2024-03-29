@@ -1,6 +1,8 @@
+import 'package:college_buddy_admin/const/borders/app_border.dart';
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/padding/app_padding.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
+import 'package:college_buddy_admin/shared/widget/buttons/app_primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -11,45 +13,83 @@ class CountContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, mainAxisSpacing: 8.0, // Adjust spacing as needed
-        crossAxisSpacing: 8.0, // Adjust spacing as needed
+        crossAxisCount: 2,
+        mainAxisSpacing: 12.0, // Adjust spacing as needed
+        crossAxisSpacing: 15.0, // Adjust spacing as needed
         childAspectRatio: 2.0, // Adjust aspect ratio as needed
-        mainAxisExtent: 4,
+        mainAxisExtent: 170,
       ),
       shrinkWrap: true,
       itemCount: 2,
       itemBuilder: (context, index) => Container(
         height: 100,
-        padding: AppPadding.kSingleHorizontal,
+        padding: AppPadding.kSinglePad,
         decoration: BoxDecoration(
-          color: AppColors.kPrimaryBgColor.withOpacity(0.1),
+          color: AppColors.kSecondaryBgColor,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const AppSmallText(
-                  text: 'Students',
+                Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: AppColors.green100.withOpacity(0.4),
+                    borderRadius: AppBorder.kHalfCurve,
+                  ),
+                  child: const Icon(
+                    Icons.calendar_month_sharp,
+                    color: AppColors.green500,
+                    size: 30,
+                  ),
+                ),
+                const Icon(
+                  Icons.more_vert_rounded,
                   color: AppColors.grey400,
-                ).pOnly(bottom: 5),
-                const AppSmallText(
-                  text: '2.25K',
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                  size: 25,
                 )
               ],
             ),
-            const Icon(
-              Icons.people,
-              size: 40,
-              color: AppColors.purple500,
+            8.heightBox,
+            const AppSmallText(
+              text: 'February 2024',
+            ).pOnly(bottom: 5),
+            const AppSmallText(
+              text: 'Your february class routine is here',
+              fontSize: 12,
+              color: AppColors.grey400,
             ),
+            8.heightBox,
+            Flexible(
+              child: AppPrimaryButton(
+                fontColor: AppColors.kPrimaryTextColor,
+                labelText: 'Download Routin (pdf)',
+                onPressed: () {},
+                freeSize: true,
+                borderRadius: AppBorder.kQuatCurve,
+                size: const Size(double.infinity, 35),
+                fontWeight: FontWeight.w500,
+              ),
+            )
           ],
         ),
+
+        // Row(
+        //   children: [
+
+        //     const Icon(
+        //       Icons.people,
+        //       size: 40,
+        //       color: AppColors.purple500,
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }
