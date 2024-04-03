@@ -43,7 +43,7 @@ class _DropDownButtonFieldState extends State<DropDownButtonField> {
               child: AppSmallText(
                 fontSize: 16,
                 text: e,
-                color: AppColors.grey200,
+                color: AppColors.grey800,
               ),
             ),
           )
@@ -57,9 +57,9 @@ class _DropDownButtonFieldState extends State<DropDownButtonField> {
       icon: const Icon(
         Icons.arrow_drop_down,
         size: 30,
-        color: AppColors.kPrimaryButtonColor,
+        color: AppColors.green500,
       ),
-      dropdownColor: AppColors.green600,
+      dropdownColor: AppColors.green100,
       decoration: InputDecoration(
         filled: true,
         hintText: widget.hintText,
@@ -78,14 +78,11 @@ class _DropDownButtonFieldState extends State<DropDownButtonField> {
         prefixIcon: widget.prefixIcon,
         fillColor: Colors.transparent,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: AppColors.grey400,
-            width: 0.7,
-          ),
+          borderSide: const BorderSide(color: AppColors.grey800),
           borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.kPrimaryButtonColor),
+          borderSide: const BorderSide(color: AppColors.grey800),
           borderRadius: BorderRadius.circular(8),
         ),
       ),

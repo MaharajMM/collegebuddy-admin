@@ -10,6 +10,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(
       page: HomeRoute.page,
       path: '/',
+      // path: '/home',
       initial: true,
     ),
     AutoRoute(
@@ -18,5 +19,10 @@ class AppRouter extends $AppRouter {
       // initial: true,
     ),
     AutoRoute(page: SettingsRoute.page, path: '/settings'),
+    AutoRoute(
+      page: AddStudentRoute.page,
+      path: '/add-student',
+      // path: '/',
+    ),
   ];
 }

@@ -5,6 +5,7 @@ import 'package:college_buddy_admin/features/home/view/widgets/side_bar_widget.d
 import 'package:college_buddy_admin/features/home/view/widgets/side_menu_widget.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/summary_widget.dart';
 import 'package:college_buddy_admin/features/settings/view/settings_page.dart';
+import 'package:college_buddy_admin/features/students/view/students_page.dart';
 import 'package:college_buddy_admin/shared/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -68,12 +69,7 @@ class _HomeViewState extends State<HomeView> {
                         case 0:
                           return const DashBoardWidget();
                         case 1:
-                          return const Center(
-                            child: Text(
-                              'Search',
-                              style: TextStyle(color: AppColors.green100, fontSize: 40),
-                            ),
-                          );
+                          return const StudentsPage();
                         case 2:
                           return const Center(
                             child: Text(

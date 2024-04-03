@@ -30,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
     this.isErrorText = false,
     this.isFillColor = false,
     this.isObscureText = false,
+    this.islabelText = true,
   });
 
   final Widget? prefixIcon;
@@ -55,6 +56,7 @@ class CustomTextFormField extends StatelessWidget {
   final double fontSize;
   final double? letterSpacing;
   final bool? isFillColor;
+  final bool islabelText;
   final bool isObscureText;
   @override
   Widget build(BuildContext context) {
@@ -84,8 +86,8 @@ class CustomTextFormField extends StatelessWidget {
         prefixIcon: prefixIcon,
         hintText: hintText,
         suffixIcon: sufixIcon,
-        labelText: isFillColor == false ? hintText : null,
-        labelStyle: isFillColor == false
+        labelText: islabelText ? hintText : null,
+        labelStyle: islabelText
             ? GoogleFonts.ubuntu(
                 fontSize: 16,
                 color: AppColors.kBlack,
@@ -98,7 +100,7 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: fillColor,
         hintStyle: const TextStyle(
           fontSize: 16,
-          color: AppColors.green200,
+          color: AppColors.grey400,
           fontWeight: FontWeight.w400,
         ),
         errorStyle: isErrorText! ? const TextStyle(color: AppColors.green300) : null,

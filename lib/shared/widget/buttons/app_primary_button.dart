@@ -13,7 +13,7 @@ class AppPrimaryButton extends StatelessWidget {
     required this.onPressed,
     this.isLoading = false,
     this.color = AppColors.green600,
-    this.fontColor = AppColors.kBlack,
+    this.fontColor = AppColors.grey200,
     this.freeSize = false,
     this.fontSize = 12,
     this.isCTA = false,
@@ -21,7 +21,7 @@ class AppPrimaryButton extends StatelessWidget {
     this.isIcon = false,
     this.isButtonActive,
     this.size = const Size(0, 0),
-    this.fontWeight = FontWeight.w800,
+    this.fontWeight = FontWeight.w600,
   });
   final BorderRadiusGeometry? borderRadius;
   final String labelText;
