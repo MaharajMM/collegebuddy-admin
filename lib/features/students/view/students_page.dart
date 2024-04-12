@@ -14,14 +14,24 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class StudentsPage extends StatefulWidget {
+@RoutePage()
+class StudentsPage extends StatelessWidget {
   const StudentsPage({super.key});
 
   @override
-  State<StudentsPage> createState() => _StudentsPageState();
+  Widget build(BuildContext context) {
+    return const StudentView();
+  }
 }
 
-class _StudentsPageState extends State<StudentsPage> {
+class StudentView extends StatefulWidget {
+  const StudentView({super.key});
+
+  @override
+  State<StudentView> createState() => _StudentViewState();
+}
+
+class _StudentViewState extends State<StudentView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

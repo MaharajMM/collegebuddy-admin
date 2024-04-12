@@ -35,7 +35,7 @@ class _AppState extends ConsumerState<App> with GlobalHelper {
       debugShowCheckedModeBanner: false,
       title: 'CollegeBuddy Admin',
       theme: Themes.theme,
-      darkTheme: Themes.darkTheme,
+      // darkTheme: Themes.darkTheme,
       themeMode: currentTheme,
       routerConfig: approuter.config(
         placeholder: (context) => const SizedBox.shrink(),

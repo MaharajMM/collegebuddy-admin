@@ -9,20 +9,31 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: CounterRoute.page, path: '/counter'),
     AutoRoute(
       page: HomeRoute.page,
-      path: '/',
+      path: '/home',
       // path: '/home',
-      initial: true,
     ),
     AutoRoute(
       page: LoginRoute.page,
       path: '/login',
       // initial: true,
     ),
-    AutoRoute(page: SettingsRoute.page, path: '/settings'),
     AutoRoute(
       page: AddStudentRoute.page,
       path: '/add-student',
-      // path: '/',
+    ),
+
+    //
+
+    AutoRoute(
+      page: AdminRoute.page,
+      path: '/',
+      initial: true,
+      children: [
+        RedirectRoute(path: '', redirectTo: 'dashboard'),
+        AutoRoute(page: DashboardRoute.page, path: 'dashboard'),
+        AutoRoute(page: StudentsRoute.page, path: 'students'),
+        AutoRoute(page: SettingsRoute.page, path: 'settings'),
+      ],
     ),
   ];
 }
