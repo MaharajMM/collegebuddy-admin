@@ -39,7 +39,6 @@ dependencies:
   permission_handler: ^11.3.1
   platform_info: ^4.0.2
   responsive_framework: ^1.4.0
-  sidebarx: ^0.16.3
   table_calendar: ^3.0.9
   talker_dio_logger: ^4.0.3
   talker_flutter: ^4.0.3
