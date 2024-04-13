@@ -6,6 +6,7 @@ import 'package:college_buddy_admin/features/home/view/widgets/side_menu_widget.
 import 'package:college_buddy_admin/features/home/view/widgets/summary_widget.dart';
 import 'package:college_buddy_admin/shared/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 @RoutePage()
 class AdminPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class AdminView extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
     return Scaffold(
-      backgroundColor: AppColors.kSecondaryBgColor,
+      backgroundColor: AppColors.green100,
       drawer: !isDesktop
           ? const Drawer(
               // backgroundColor: AppColors.kBlack,
@@ -41,11 +42,25 @@ class AdminView extends StatelessWidget {
       body: Row(
         children: [
           isDesktop
-              ? const Column(
+              ? Column(
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    NavLink(label: 'DashBoard', destination: DashboardRoute()),
-                    NavLink(label: 'Student', destination: StudentsRoute()),
-                    NavLink(label: 'Settings', destination: SettingsRoute()),
+                    const AppSmallText(
+                            text: 'College Buddy',
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold)
+                        .p20(),
+                    const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        NavLink(
+                            label: 'DashBoard', destination: DashboardRoute()),
+                        NavLink(label: 'Student', destination: StudentsRoute()),
+                        NavLink(
+                            label: 'Settings', destination: SettingsRoute()),
+                      ],
+                    ),
                   ],
                 )
               : Container(),
@@ -75,13 +90,54 @@ class NavLink extends StatefulWidget {
 class _NavLinkState extends State<NavLink> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        context.navigateTo(widget.destination);
-      },
-      child: AppSmallText(
-        text: widget.label,
-      ),
-    );
+    return
+        // Container(
+        //   padding: const EdgeInsets.all(10),
+        //   child: ListTile(
+        //     title: AppSmallText(
+        //       text: widget.label,
+        //     ),
+        //     onTap: () {
+        //       context.navigateTo(widget.destination);
+        //     },
+        //   ),
+        // );
+        // ListTile(
+        //   title: AppSmallText(
+        //     text: widget.label,
+        //   ),
+        //   onTap: () {
+        //     context.navigateTo(widget.destination);
+        //   },
+        // );
+        //     ElevatedButton(
+        //   onPressed: () {
+        //     context.navigateTo(widget.destination);
+        //   },
+        //   child: AppSmallText(
+        //     text: widget.label,
+        //   ),
+        // );
+        ElevatedButton(
+            onPressed: () {
+              context.navigateTo(widget.destination);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.grey100.withOpacity(0.5),
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Icon(Icons.menu),
+                AppSmallText(
+                  text: widget.label,
+                  fontSize: 16,
+                ),
+              ],
+            ));
   }
 }

@@ -9,15 +9,20 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
-import 'package:college_buddy_admin/features/home/view/home_page.dart' as _i5;
-import 'package:college_buddy_admin/features/login/view/login_page.dart' deferred as _i6;
-import 'package:college_buddy_admin/features/settings/view/settings_page.dart' as _i7;
 import 'package:college_buddy_admin/features/admin/view/admin_page.dart' as _i2;
-import 'package:college_buddy_admin/features/counter/view/counter_page.dart' deferred as _i3;
-import 'package:college_buddy_admin/features/dashboard/view/dashboard_page.dart' as _i4;
+import 'package:college_buddy_admin/features/counter/view/counter_page.dart'
+    deferred as _i3;
+import 'package:college_buddy_admin/features/dashboard/view/dashboard_page.dart'
+    as _i4;
+import 'package:college_buddy_admin/features/home/view/home_page.dart' as _i5;
+import 'package:college_buddy_admin/features/login/view/login_page.dart'
+    deferred as _i6;
+import 'package:college_buddy_admin/features/settings/view/settings_page.dart'
+    as _i7;
 import 'package:college_buddy_admin/features/students/add_student_view/view/add_student_page.dart'
     as _i1;
-import 'package:college_buddy_admin/features/students/view/students_page.dart' as _i8;
+import 'package:college_buddy_admin/features/students/view/students_page.dart'
+    as _i8;
 
 abstract class $AppRouter extends _i9.RootStackRouter {
   $AppRouter({super.navigatorKey});
