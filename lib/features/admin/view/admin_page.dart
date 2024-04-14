@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
-import 'package:college_buddy_admin/core/router/router.gr.dart';
 import 'package:college_buddy_admin/features/admin/view/widgets/side_menu_bar.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/summary_widget.dart';
 import 'package:college_buddy_admin/shared/utils/responsive.dart';

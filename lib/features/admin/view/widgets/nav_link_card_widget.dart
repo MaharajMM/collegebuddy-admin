@@ -25,7 +25,8 @@ class NavLink extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: isSelected ? AppColors.green100.withOpacity(0.4) : Colors.transparent,
+          backgroundColor:
+              isSelected ? null : AppColors.green100.withOpacity(0.5),
           shape: RoundedRectangleBorder(
             borderRadius: AppBorder.kQuatCurve,
           ),
@@ -39,13 +40,13 @@ class NavLink extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: isSelected ? AppColors.green500 : AppColors.grey500,
+              color: isSelected ? AppColors.green500 : AppColors.kBlack,
             ),
             7.widthBox,
             AppSmallText(
               text: label,
               fontSize: 16,
-              color: isSelected ? AppColors.green500 : AppColors.grey500,
+              color: isSelected ? AppColors.green500 : AppColors.kBlack,
               fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
             ),
           ],
