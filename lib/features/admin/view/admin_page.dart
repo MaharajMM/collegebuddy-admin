@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
+import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
+import 'package:college_buddy_admin/core/router/router.gr.dart';
 import 'package:college_buddy_admin/features/admin/view/widgets/side_menu_bar.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/summary_widget.dart';
 import 'package:college_buddy_admin/shared/utils/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 @RoutePage()
 class AdminPage extends StatelessWidget {
@@ -46,13 +47,7 @@ class _AdminViewState extends State<AdminView> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           isDesktop
-              ? const Column(
-                  children: [
-                    NavLink(label: 'DashBoard', destination: DashboardRoute()),
-                    NavLink(label: 'Student', destination: StudentsRoute()),
-                    NavLink(label: 'Settings', destination: SettingsRoute()),
-                  ],
-                )
+              ? const Expanded(flex: 1, child: SideMenuBar())
               : Container(),
           const Expanded(
             flex: 6,
