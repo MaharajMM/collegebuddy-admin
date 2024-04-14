@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
-import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
-import 'package:college_buddy_admin/core/router/router.gr.dart';
-import 'package:college_buddy_admin/features/home/view/widgets/side_menu_widget.dart';
+import 'package:college_buddy_admin/features/admin/view/widgets/side_menu_bar.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/summary_widget.dart';
 import 'package:college_buddy_admin/shared/utils/responsive.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +16,15 @@ class AdminPage extends StatelessWidget {
   }
 }
 
-class AdminView extends StatelessWidget {
+class AdminView extends StatefulWidget {
   const AdminView({super.key});
 
+  @override
+  State<AdminView> createState() => _AdminViewState();
+}
+
+class _AdminViewState extends State<AdminView> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
@@ -28,43 +32,30 @@ class AdminView extends StatelessWidget {
       backgroundColor: AppColors.green100,
       drawer: !isDesktop
           ? const Drawer(
-              // backgroundColor: AppColors.kBlack,
-              child: SideMenuWidget(),
+              child: SideMenuBar(),
             )
           : null,
       endDrawer: Responsive.isMobile(context)
           ? Drawer(
-              // backgroundColor: AppColors.kBlack,
               width: MediaQuery.of(context).size.width * 0.8,
               child: const SummaryWidget(),
             )
           : null,
       body: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           isDesktop
-              ? Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              ? const Column(
                   children: [
-                    const AppSmallText(
-                            text: 'College Buddy',
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold)
-                        .p20(),
-                    const Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        NavLink(
-                            label: 'DashBoard', destination: DashboardRoute()),
-                        NavLink(label: 'Student', destination: StudentsRoute()),
-                        NavLink(
-                            label: 'Settings', destination: SettingsRoute()),
-                      ],
-                    ),
+                    NavLink(label: 'DashBoard', destination: DashboardRoute()),
+                    NavLink(label: 'Student', destination: StudentsRoute()),
+                    NavLink(label: 'Settings', destination: SettingsRoute()),
                   ],
                 )
               : Container(),
           const Expanded(
+            flex: 6,
             // nested routes will be rendered here
             child: AutoRouter(),
           ),
@@ -90,54 +81,13 @@ class NavLink extends StatefulWidget {
 class _NavLinkState extends State<NavLink> {
   @override
   Widget build(BuildContext context) {
-    return
-        // Container(
-        //   padding: const EdgeInsets.all(10),
-        //   child: ListTile(
-        //     title: AppSmallText(
-        //       text: widget.label,
-        //     ),
-        //     onTap: () {
-        //       context.navigateTo(widget.destination);
-        //     },
-        //   ),
-        // );
-        // ListTile(
-        //   title: AppSmallText(
-        //     text: widget.label,
-        //   ),
-        //   onTap: () {
-        //     context.navigateTo(widget.destination);
-        //   },
-        // );
-        //     ElevatedButton(
-        //   onPressed: () {
-        //     context.navigateTo(widget.destination);
-        //   },
-        //   child: AppSmallText(
-        //     text: widget.label,
-        //   ),
-        // );
-        ElevatedButton(
-            onPressed: () {
-              context.navigateTo(widget.destination);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.grey100.withOpacity(0.5),
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                const Icon(Icons.menu),
-                AppSmallText(
-                  text: widget.label,
-                  fontSize: 16,
-                ),
-              ],
-            ));
+    return ElevatedButton(
+      onPressed: () {
+        context.navigateTo(widget.destination);
+      },
+      child: AppSmallText(
+        text: widget.label,
+      ),
+    );
   }
 }
