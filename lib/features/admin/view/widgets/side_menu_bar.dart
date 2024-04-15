@@ -19,11 +19,19 @@ class SideMenuData {
       label: 'Students',
       destination: const StudentsRoute(),
     ),
-    // MenuModel(icon: Icons.local_library_outlined, label: 'Library', destination: const LibraryRoute(),),
+    MenuModel(
+      icon: Icons.local_library_outlined,
+      label: 'Library',
+      destination: const LibraryRoute(),
+    ),
     // MenuModel(icon: Icons.account_balance_outlined, label: 'Account'),
     // MenuModel(icon: Icons.photo_filter_sharp, label: 'Attendace'),
     // MenuModel(icon: Icons.file_present_outlined, label: 'Notes'),
-    // MenuModel(icon: Icons.file_open_outlined, label: 'Notice'),
+    MenuModel(
+      icon: Icons.file_open_outlined,
+      label: 'Notice',
+      destination: const NoticeRoute(),
+    ),
     MenuModel(
       icon: Icons.settings,
       label: 'Settings',

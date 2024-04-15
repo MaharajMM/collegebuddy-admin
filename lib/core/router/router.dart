@@ -32,6 +32,8 @@ class AppRouter extends $AppRouter {
         RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(page: DashboardRoute.page, path: 'dashboard'),
         AutoRoute(page: StudentsRoute.page, path: 'students'),
+        AutoRoute(page: LibraryRoute.page, path: 'library'),
+        AutoRoute(page: NoticeRoute.page, path: 'notice'),
         AutoRoute(page: SettingsRoute.page, path: 'settings'),
       ],
     ),
