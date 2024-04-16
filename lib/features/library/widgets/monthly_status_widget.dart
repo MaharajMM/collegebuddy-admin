@@ -26,7 +26,7 @@ class MonthlySummaryCard extends StatelessWidget {
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ).p16(),
-          const NewRequestCard().p12().w(double.maxFinite),
+          const NewRequestCard().p12().w(double.maxFinite).h(200),
           const BooksStatus(),
         ],
       ),
@@ -42,11 +42,11 @@ class BooksStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        const BooksBorrowedStats().p12(),
+        const BooksBorrowedStats().p12().w(180).h(200),
         // 20.widthBox,
-        const BooksOverDueStats().p12(),
+        const BooksOverDueStats().p12().w(180).h(200),
       ],
     );
   }
@@ -79,7 +79,7 @@ class BooksBorrowedStats extends StatelessWidget {
               AppSmallText(
                 textAlign: TextAlign.start,
                 text: 'Books\nBorrowed',
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.w400,
                 color: AppColors.grey400,
               ),
@@ -87,7 +87,7 @@ class BooksBorrowedStats extends StatelessWidget {
           ),
           15.heightBox,
           const AppSmallText(
-              text: '12', fontSize: 35, fontWeight: FontWeight.bold),
+              text: '12', fontSize: 40, fontWeight: FontWeight.bold),
         ],
       ).p12(),
     );
@@ -122,7 +122,7 @@ class BooksOverDueStats extends StatelessWidget {
               AppSmallText(
                 textAlign: TextAlign.start,
                 text: 'Books\nOverdue',
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.w400,
                 color: AppColors.grey400,
               ),
@@ -130,7 +130,7 @@ class BooksOverDueStats extends StatelessWidget {
           ),
           15.heightBox,
           const AppSmallText(
-              text: '12', fontSize: 35, fontWeight: FontWeight.bold),
+              text: '12', fontSize: 40, fontWeight: FontWeight.bold),
         ],
       ).p12(),
     );

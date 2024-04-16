@@ -17,15 +17,15 @@ class NewRequestCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.00),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const AppSmallText(
               //========   text should be fetched from the database   =======//
               text: '12',
-              fontSize: 35,
+              fontSize: 40,
               fontWeight: FontWeight.bold),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Icon(
                 Icons.group_add_rounded,
@@ -35,7 +35,7 @@ class NewRequestCard extends StatelessWidget {
               10.widthBox,
               const AppSmallText(
                 text: 'New Requests',
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.w400,
                 color: AppColors.grey400,
               ),
