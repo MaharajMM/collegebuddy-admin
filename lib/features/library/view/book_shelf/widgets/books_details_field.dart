@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class StudentDetailsField extends StatelessWidget {
+class BooksDetailsField extends StatelessWidget {
   final String hintText;
   final String title;
   final String name;
-  const StudentDetailsField(
-      {super.key, required this.hintText, required this.name, required this.title});
+  const BooksDetailsField(
+      {super.key,
+      required this.hintText,
+      required this.name,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
