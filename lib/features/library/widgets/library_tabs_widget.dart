@@ -34,7 +34,7 @@ class LibraryTabs extends StatelessWidget {
                 text: 'Book Requests',
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
-                color: AppColors.grey400)
+                color: AppColors.kBlack)
           ],
         ),
         20.widthBox,
@@ -55,10 +55,10 @@ class LibraryTabs extends StatelessWidget {
               ),
             ),
             const AppSmallText(
-                text: 'Books Shelf',
+                text: 'Book Shelf',
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
-                color: AppColors.grey400)
+                color: AppColors.kBlack)
           ],
         ),
       ],

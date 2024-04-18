@@ -15,7 +15,7 @@ import 'package:college_buddy_admin/features/counter/view/counter_page.dart'
 import 'package:college_buddy_admin/features/dashboard/view/dashboard_page.dart'
     as _i7;
 import 'package:college_buddy_admin/features/home/view/home_page.dart' as _i8;
-import 'package:college_buddy_admin/features/library/view/book_requests_page.dart'
+import 'package:college_buddy_admin/features/library/view/book-request/book_requests_page.dart'
     as _i4;
 import 'package:college_buddy_admin/features/library/view/book_shelf/add_books_page.dart'
     as _i1;

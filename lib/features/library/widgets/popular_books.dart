@@ -1,6 +1,8 @@
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
+import 'package:college_buddy_admin/features/library/widgets/popular_books_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class PopularBooksCard extends StatelessWidget {
@@ -25,10 +27,11 @@ class PopularBooksCard extends StatelessWidget {
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ).p16(),
-          //*  SHOWS THE POPULAR BOOKS OF THE LIBRARY
+          const PopularBooksList(),
         ],
       ),
       //Height should be removed after adding the full content
     );
   }
 }
+
