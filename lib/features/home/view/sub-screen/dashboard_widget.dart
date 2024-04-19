@@ -22,13 +22,6 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     final isDesktop = Responsive.isDesktop(context);
     return Column(
       children: [
-        // Container(
-        //   decoration: BoxDecoration(
-        //     border: const Border(bottom: BorderSide(color: AppColors.grey300)),
-        //     color: AppColors.green100.withOpacity(0.1),
-        //   ),
-        //   child: const HeaderWidget(),
-        // ),
         Flexible(
           child: SingleChildScrollView(
             child: Padding(
@@ -50,7 +43,9 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                               fontSize: 24,
                               fontWeight: FontWeight.w600,
                             ),
-                            AppSmallText(text: 'Nurture the Future of Students with CollegeBuddy.')
+                            AppSmallText(
+                                text:
+                                    'Nurture the Future of Students with CollegeBuddy.')
                           ],
                         ).pOnly(bottom: 20),
                         const ActivityDetailsCard(),
