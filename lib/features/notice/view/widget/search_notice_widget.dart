@@ -4,38 +4,22 @@ import 'package:college_buddy_admin/shared/widget/custom_text_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class SearchStudentRowWidget extends StatelessWidget {
-  const SearchStudentRowWidget({
-    super.key,
-  });
+class SearchNoticeWidget extends StatelessWidget {
+  const SearchNoticeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(
+        const Flexible(
           flex: 4,
           child: Row(
             children: [
-              const Flexible(
+              Flexible(
                 child: CustomTextFormField(
                   name: '',
-                  hintText: 'Search by name',
-                ),
-              ),
-              8.widthBox,
-              const Flexible(
-                child: CustomTextFormField(
-                  name: '',
-                  hintText: 'Search by Regd. No',
-                ),
-              ),
-              8.widthBox,
-              const Flexible(
-                child: CustomTextFormField(
-                  name: '',
-                  hintText: 'Search by Year',
+                  hintText: 'Search Any notice',
                 ),
               ),
             ],

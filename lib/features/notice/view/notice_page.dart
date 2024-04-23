@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:college_buddy_admin/const/colors/app_colors.dart';
+import 'package:college_buddy_admin/features/notice/widgets/notice_body.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -21,6 +23,9 @@ class NoticeView extends StatefulWidget {
 class _NoticeViewState extends State<NoticeView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      backgroundColor: AppColors.kSecondaryBgColor,
+      body: NoticeBody(),
+    );
   }
 }
