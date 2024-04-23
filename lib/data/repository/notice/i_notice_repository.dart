@@ -7,4 +7,11 @@ abstract class INoticeRepository {
   Future<Result<AllNoticeModel, APIException>> getAllNotices({
     required CancelToken cancelToken,
   });
+
+  Future<Result<AddNoticeModel, APIException>> addNotice({
+    required CancelToken cancelToken,
+    required String title,
+    required String downloadUrl,
+    required String date,
+  });
 }

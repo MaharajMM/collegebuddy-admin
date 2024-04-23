@@ -45,14 +45,16 @@ class PrimaryNoticeBody extends StatelessWidget {
                     data: (noticeModel) {
                       final allNoticeList = noticeModel.data;
                       return Flexible(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              border: Border.all(color: AppColors.grey300, width: 2),
+                        child: Center(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                border: Border.all(color: AppColors.grey300, width: 2),
+                              ),
+                              child: NoticeDataTable(allNotice: allNoticeList!),
                             ),
-                            child: NoticeDataTable(allNotice: allNoticeList!),
                           ),
                         ),
                       );

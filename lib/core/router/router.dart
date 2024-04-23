@@ -42,6 +42,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: AttendanceRoute.page, path: 'attendance'),
         AutoRoute(page: ExamRoute.page, path: 'exam'),
         AutoRoute(page: NotesRoute.page, path: 'Notes'),
+        AutoRoute(page: AddNoticeRoute.page, path: 'add-notices'),
       ],
     ),
   ];

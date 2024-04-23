@@ -29,6 +29,39 @@ class AllNoticeModel {
       };
 }
 
+class AddNoticeModel {
+  final String? message;
+  final NoticeData? notice;
+
+  AddNoticeModel({
+    this.message,
+    this.notice,
+  });
+
+  AddNoticeModel copyWith({
+    String? message,
+    NoticeData? notice,
+  }) =>
+      AddNoticeModel(
+        message: message ?? this.message,
+        notice: notice ?? this.notice,
+      );
+
+  factory AddNoticeModel.fromJson(String str) => AddNoticeModel.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory AddNoticeModel.fromMap(Map<String, dynamic> json) => AddNoticeModel(
+        message: json["message"],
+        notice: json["notice"] == null ? null : NoticeData.fromMap(json["notice"]),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "message": message,
+        "notice": notice?.toMap(),
+      };
+}
+
 class NoticeData {
   final String? id;
   final String? date;
