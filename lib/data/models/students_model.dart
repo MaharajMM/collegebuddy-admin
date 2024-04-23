@@ -35,6 +35,39 @@ class StudentsModel {
       };
 }
 
+class AddStudentModel {
+  final String? message;
+  final StudentsData? student;
+
+  AddStudentModel({
+    this.message,
+    this.student,
+  });
+
+  AddStudentModel copyWith({
+    String? message,
+    StudentsData? student,
+  }) =>
+      AddStudentModel(
+        message: message ?? this.message,
+        student: student ?? this.student,
+      );
+
+  factory AddStudentModel.fromJson(String str) => AddStudentModel.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory AddStudentModel.fromMap(Map<String, dynamic> json) => AddStudentModel(
+        message: json["message"],
+        student: json["student"] == null ? null : StudentsData.fromMap(json["student"]),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "message": message,
+        "student": student?.toMap(),
+      };
+}
+
 class StudentsData {
   final String? id;
   final String? name;

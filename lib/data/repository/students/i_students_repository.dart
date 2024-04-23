@@ -7,4 +7,17 @@ abstract class IStudentsRepository {
   Future<Result<StudentsModel, APIException>> getAllStudents({
     required CancelToken cancelToken,
   });
+
+  Future<Result<AddStudentModel, APIException>> addStudent({
+    required CancelToken cancelToken,
+    required String name,
+    required String email,
+    required String password,
+    required String regdNo,
+    required int rollNo,
+    required int phone,
+    required String session,
+    required String branch,
+    required String dob,
+  });
 }

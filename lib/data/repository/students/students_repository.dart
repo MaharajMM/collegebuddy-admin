@@ -20,4 +20,41 @@ class StudentsRepository implements IStudentsRepository {
       return Error(APIException.fromMap(result.data));
     }
   }
+
+  @override
+  Future<Result<AddStudentModel, APIException>> addStudent({
+    required CancelToken cancelToken,
+    required String name,
+    required String email,
+    required String password,
+    required String regdNo,
+    required int rollNo,
+    required int phone,
+    required String session,
+    required String branch,
+    required String dob,
+  }) async {
+    final data = {
+      "name": name,
+      "email": email,
+      "password": password,
+      "rollNo": rollNo,
+      "registrationNo": regdNo,
+      "phoneNo": phone,
+      "session": session,
+      "branch": branch,
+      "dob": dob,
+      "profilePicture": "",
+    };
+    final result = await dio.post(
+      AppUrls.addstudentURL,
+      cancelToken: cancelToken,
+      data: data,
+    );
+    if (result.statusCode == 200 || result.statusCode == 201) {
+      return Success(AddStudentModel.fromMap(result.data));
+    } else {
+      return Error(APIException.fromMap(result.data));
+    }
+  }
 }
