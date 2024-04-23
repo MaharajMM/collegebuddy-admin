@@ -1,17 +1,18 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:college_buddy_admin/bootstrap.dart';
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/padding/app_padding.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
 import 'package:college_buddy_admin/core/router/router.gr.dart';
-import 'package:college_buddy_admin/data/models/user_model.dart';
-import 'package:college_buddy_admin/data/values/user_vlaue.dart';
+import 'package:college_buddy_admin/data/models/students_model.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/header_widget.dart';
-import 'package:college_buddy_admin/features/students/widgets/search_student_row_widget.dart';
-import 'package:college_buddy_admin/features/students/widgets/text_dialog_widget.dart';
+import 'package:college_buddy_admin/features/students/all_students/controller/students_pod.dart';
+import 'package:college_buddy_admin/features/students/all_students/widgets/search_student_row_widget.dart';
+import 'package:college_buddy_admin/shared/riverpod_ext/asynvalue_easy_when.dart';
 import 'package:college_buddy_admin/shared/utils/utility.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 @RoutePage()
@@ -69,6 +70,7 @@ class _StudentViewState extends State<StudentView> {
                     const SearchStudentRowWidget(),
                     20.heightBox,
                     // StudentDetailsTableWidget(),
+
                     Flexible(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12.0),
@@ -77,7 +79,22 @@ class _StudentViewState extends State<StudentView> {
                             borderRadius: BorderRadius.circular(12.0),
                             border: Border.all(color: AppColors.grey300, width: 2),
                           ),
-                          child: buildDataTable(context),
+                          child: Consumer(
+                            builder: (context, ref, child) {
+                              final allStudentsAsync = ref.watch(studentsProvider);
+                              return allStudentsAsync.easyWhen(
+                                data: (studentsModel) {
+                                  final studentsList = studentsModel.data;
+                                  return studentsList != null && studentsList.isNotEmpty
+                                      ? buildDataTable(
+                                          context: context,
+                                          allStudents: studentsList,
+                                        )
+                                      : const SizedBox.shrink();
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -103,19 +120,20 @@ class _StudentViewState extends State<StudentView> {
     );
   }
 
-  Widget buildDataTable(
-    BuildContext context,
-  ) {
-    final columns = ['Name', 'Roll no.', 'Regd No.', 'DOB', 'Phone No.', 'Email', 'Action'];
+  Widget buildDataTable({
+    required BuildContext context,
+    required List<StudentsData> allStudents,
+  }) {
+    final columns = ['Name', 'Roll no.', 'Regd No.', 'DOB', 'Phone No.', 'Email', 'Branch'];
     return DataTable(
       columns: getColumns(columns),
-      rows: getRows(allUsers, context),
+      rows: getRows(allStudents, context),
       sortAscending: true,
       dividerThickness: 1,
       showBottomBorder: true,
       headingTextStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
       headingRowColor: MaterialStateProperty.resolveWith((states) => AppColors.green400),
-      columnSpacing: 100,
+      columnSpacing: 80,
       dataRowMinHeight: 30,
     );
   }
@@ -137,47 +155,29 @@ class _StudentViewState extends State<StudentView> {
   }
 
   List<DataRow> getRows(
-    List<User> users,
+    List<StudentsData> allStudents,
     BuildContext context,
   ) {
-    return users.map((User user) {
+    return allStudents.map((StudentsData user) {
+      var dateValue = DateFormat("yyyy-MM-ddTHH:mm:ssZ").parseUTC(user.dob!).toLocal();
+      // Format date
+      String formattedDate = DateFormat('dd-MMM-yyyy').format(dateValue);
       final cells = [
         user.name,
         user.rollNo,
-        user.regdNo,
-        user.dob,
+        user.registrationNo,
+        formattedDate,
         user.phoneNo,
         user.email,
-        'Edit'
+        user.branch,
       ];
-      Future editTableCell(User editUser) async {
-        final showFirstName = await showTextDialog(
-          context,
-          title: 'Change Name',
-          value: editUser.name,
-        );
-
-        if (showFirstName != null) {
-          // setState(() {
-          //   editUser = editUser.copyWith(name: showFirstName);
-          //   // Assuming 'users' is a list of users and 'editUser' is the user being edited
-          //   users = users.map((user) => user == editUser ? editUser : user).toList();
-          // });
-          setState(() => users = users.map((user) {
-                final isEditedUser = user == editUser;
-                return isEditedUser ? user.copyWith(name: showFirstName) : user;
-              }).toList());
-        } else {
-          talker.info('showFirstName is null');
-        }
-      }
 
       return DataRow(
         cells: Utility.modelBuilder(cells, (index, model) {
-          final showIcon = index == 6;
+          // final showIcon = index == 6;
           return DataCell(
             Text(
-              model,
+              model.toString(),
               style: GoogleFonts.ubuntu(
                 fontSize: 14,
                 color: AppColors.grey800,
@@ -185,12 +185,9 @@ class _StudentViewState extends State<StudentView> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            showEditIcon: showIcon,
+            // showEditIcon: showIcon,
             onTap: () {
               switch (index) {
-                case 0:
-                  editTableCell(user);
-                  break;
                 case 6:
                   context.navigateTo(const AddStudentRoute());
                 default:

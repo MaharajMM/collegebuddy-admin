@@ -27,7 +27,7 @@ import 'package:college_buddy_admin/features/notes/view/notes_page.dart' as _i14
 import 'package:college_buddy_admin/features/notice/view/notice_page.dart' as _i15;
 import 'package:college_buddy_admin/features/students/add_student_view/view/add_student_page.dart'
     as _i3;
-import 'package:college_buddy_admin/features/students/view/students_page.dart' as _i17;
+import 'package:college_buddy_admin/features/students/all_students/view/students_page.dart' as _i17;
 
 abstract class $AppRouter extends _i18.RootStackRouter {
   $AppRouter({super.navigatorKey});
