@@ -1,8 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
-import 'package:college_buddy_admin/features/add_notice/controller/add_notice_pod.dart';
-import 'package:college_buddy_admin/features/add_notice/view/widgets/add_notice_button.dart';
+import 'package:college_buddy_admin/data/models/notice/all_notice_model.dart';
+import 'package:college_buddy_admin/features/edit_notice/controller/edit_notice_pod.dart';
+import 'package:college_buddy_admin/features/edit_notice/view/widgets/edit_notice_button.dart';
 import 'package:college_buddy_admin/features/notice/controller/notice_pod.dart';
 import 'package:college_buddy_admin/features/notice_form/const/notice_form_keys.dart';
 import 'package:college_buddy_admin/features/notice_form/view/notice_form_view.dart';
@@ -13,39 +14,42 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 @RoutePage()
-class AddNoticePage extends StatelessWidget {
-  const AddNoticePage({super.key});
+class EditNoticePage extends StatelessWidget {
+  final NoticeData notice;
+  const EditNoticePage({super.key, required this.notice});
 
   @override
   Widget build(BuildContext context) {
-    return const AddNoticeView();
+    return EditNoticeView(notice: notice);
   }
 }
 
-class AddNoticeView extends ConsumerStatefulWidget {
-  const AddNoticeView({super.key});
+class EditNoticeView extends ConsumerStatefulWidget {
+  final NoticeData? notice;
+  const EditNoticeView({super.key, this.notice});
 
   @override
-  ConsumerState<AddNoticeView> createState() => _AddNoticeViewState();
+  ConsumerState<EditNoticeView> createState() => _EditNoticeViewState();
 }
 
-class _AddNoticeViewState extends ConsumerState<AddNoticeView> {
-  final _addNoticeFormKey = GlobalKey<FormBuilderState>();
+class _EditNoticeViewState extends ConsumerState<EditNoticeView> {
+  final _editNoticeFormKey = GlobalKey<FormBuilderState>();
 
   void submit() {
-    if (_addNoticeFormKey.currentState?.saveAndValidate() ?? false) {
+    if (_editNoticeFormKey.currentState?.saveAndValidate() ?? false) {
       HapticFeedback.lightImpact();
       Feedback.forTap(context);
-      final fields = _addNoticeFormKey.currentState!.fields;
+      final fields = _editNoticeFormKey.currentState!.fields;
       final title = fields[NoticeFormKeys.title]!.value as String;
       final downloadUrl = fields[NoticeFormKeys.downloadUrl]!.value as String;
       final date = fields[NoticeFormKeys.date]!.value as String;
 
-      ref.read(addNoticeFormProvider.notifier).addNotice(
+      ref.read(editNoticeFormProvider.notifier).editNotice(
+            noticeId: widget.notice!.id!,
             title: title,
             downloadUrl: downloadUrl,
             date: date,
-            onAddNotice: () {
+            onEditNotice: () {
               context.showToast(msg: 'success');
               ref.invalidate(noticesProvider);
               context.router.maybePop();
@@ -65,7 +69,7 @@ class _AddNoticeViewState extends ConsumerState<AddNoticeView> {
       appBar: AppBar(
         backgroundColor: AppColors.green500,
         title: const AppSmallText(
-          text: 'Add Notice',
+          text: 'Edit Notice',
           fontSize: 24,
           color: AppColors.grey200,
         ),
@@ -82,12 +86,18 @@ class _AddNoticeViewState extends ConsumerState<AddNoticeView> {
       ),
       body: SafeArea(
         child: FormBuilder(
-          key: _addNoticeFormKey,
-          initialValue: const {},
+          key: _editNoticeFormKey,
+          initialValue: widget.notice != null
+              ? {
+                  NoticeFormKeys.title: widget.notice!.title,
+                  NoticeFormKeys.downloadUrl: widget.notice!.downloadUrl,
+                  NoticeFormKeys.date: widget.notice!.date,
+                }
+              : {},
           child: NoticeFormView(
-            formKey: _addNoticeFormKey,
-            actionButton: AddNoticeButton(onSubmit: submit),
-            isEditMode: false,
+            formKey: _editNoticeFormKey,
+            actionButton: EditNoticeButton(onSubmit: submit),
+            isEditMode: true,
           ),
         ).scrollVertical().p(16),
       ),

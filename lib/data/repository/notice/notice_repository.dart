@@ -44,4 +44,29 @@ class NoticeRepository implements INoticeRepository {
       return Error(APIException.fromMap(result.data));
     }
   }
+
+  @override
+  Future<Result<AddNoticeModel, APIException>> editNotice({
+    required CancelToken cancelToken,
+    required String noticeId,
+    String? title,
+    String? downloadUrl,
+    String? date,
+  }) async {
+    final data = {
+      "date": date,
+      "title": title,
+      "downloadUrl": downloadUrl,
+    };
+    final result = await dio.put(
+      AppUrls.editNotice(noticeId: noticeId),
+      cancelToken: cancelToken,
+      data: data,
+    );
+    if (result.statusCode == 200 || result.statusCode == 201) {
+      return Success(AddNoticeModel.fromMap(result.data));
+    } else {
+      return Error(APIException.fromMap(result.data));
+    }
+  }
 }

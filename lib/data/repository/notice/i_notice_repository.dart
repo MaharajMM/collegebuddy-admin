@@ -14,4 +14,12 @@ abstract class INoticeRepository {
     required String downloadUrl,
     required String date,
   });
+
+  Future<Result<AddNoticeModel, APIException>> editNotice({
+    required CancelToken cancelToken,
+    required String noticeId,
+    String? title,
+    String? downloadUrl,
+    String? date,
+  });
 }

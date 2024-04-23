@@ -9,12 +9,10 @@ class NoticeFormView extends StatelessWidget {
   final Widget actionButton;
   final GlobalKey<FormBuilderState> formKey;
   final bool isEditMode;
-  final String? imageUrl;
   const NoticeFormView({
     super.key,
     required this.actionButton,
     required this.isEditMode,
-    this.imageUrl,
     required this.formKey,
   });
 
