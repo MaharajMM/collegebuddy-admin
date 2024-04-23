@@ -33,6 +33,9 @@ class StudentView extends StatefulWidget {
 }
 
 class _StudentViewState extends State<StudentView> {
+  String? nameQuery;
+  String? regdNoQuery;
+  String? rollNoQuery;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,53 +55,63 @@ class _StudentViewState extends State<StudentView> {
             child: SingleChildScrollView(
               child: Padding(
                 padding: AppPadding.kQuatHalfPad,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppSmallText(
-                          text: 'My students.',
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        AppSmallText(text: 'Find any students')
-                      ],
-                    ).pOnly(bottom: 20),
-                    const SearchStudentRowWidget(),
-                    20.heightBox,
-                    // StudentDetailsTableWidget(),
+                child: Consumer(
+                  builder: (context, ref, child) {
+                    final allStudentsAsync = ref.watch(studentsProvider);
+                    return allStudentsAsync.easyWhen(
+                      data: (studentsModel) {
+                        final studentsList = studentsModel.data;
+                        final filteredStudents = _filterStudents(studentsList);
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AppSmallText(
+                                  text: 'My students.',
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                AppSmallText(text: 'Find any students')
+                              ],
+                            ).pOnly(bottom: 20),
+                            SearchStudentRowWidget(
+                              onSearch: (name, regdNo, rollNo) {
+                                setState(() {
+                                  nameQuery = name;
+                                  regdNoQuery = regdNo;
+                                  rollNoQuery = rollNo;
+                                });
+                              },
+                            ),
+                            20.heightBox,
+                            // StudentDetailsTableWidget(),
 
-                    Flexible(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            border: Border.all(color: AppColors.grey300, width: 2),
-                          ),
-                          child: Consumer(
-                            builder: (context, ref, child) {
-                              final allStudentsAsync = ref.watch(studentsProvider);
-                              return allStudentsAsync.easyWhen(
-                                data: (studentsModel) {
-                                  final studentsList = studentsModel.data;
-                                  return studentsList != null && studentsList.isNotEmpty
+                            Flexible(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    border: Border.all(color: AppColors.grey300, width: 2),
+                                  ),
+                                  child: filteredStudents.isNotEmpty
                                       ? buildDataTable(
                                           context: context,
-                                          allStudents: studentsList,
+                                          allStudents: filteredStudents,
                                         )
-                                      : const SizedBox.shrink();
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                                      : const SizedBox.shrink(),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                      loadingWidget: () => const Center(child: CircularProgressIndicator()),
+                    );
+                  },
                 ),
               ),
             ),
@@ -118,6 +131,18 @@ class _StudentViewState extends State<StudentView> {
         splashColor: AppColors.green200,
       ),
     );
+  }
+
+  List<StudentsData> _filterStudents(List<StudentsData>? studentsList) {
+    if (studentsList == null) return [];
+
+    return studentsList.where((student) {
+      final nameMatch = nameQuery == null || student.name!.contains(nameQuery!);
+      final regdNoMatch = regdNoQuery == null || student.registrationNo!.contains(regdNoQuery!);
+      final rollNoMatch = rollNoQuery == null || student.rollNo!.contains(rollNoQuery!);
+
+      return nameMatch && regdNoMatch && rollNoMatch;
+    }).toList();
   }
 
   Widget buildDataTable({

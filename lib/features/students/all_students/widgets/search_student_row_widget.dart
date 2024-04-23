@@ -4,10 +4,23 @@ import 'package:college_buddy_admin/shared/widget/custom_text_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class SearchStudentRowWidget extends StatelessWidget {
+class SearchStudentRowWidget extends StatefulWidget {
+  final Function(String?, String?, String?) onSearch;
   const SearchStudentRowWidget({
     super.key,
+    required this.onSearch,
   });
+
+  @override
+  State<SearchStudentRowWidget> createState() => _SearchStudentRowWidgetState();
+}
+
+class _SearchStudentRowWidgetState extends State<SearchStudentRowWidget> {
+  final TextEditingController nameController = TextEditingController();
+
+  final TextEditingController regdNoController = TextEditingController();
+
+  final TextEditingController rollNoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,24 +31,45 @@ class SearchStudentRowWidget extends StatelessWidget {
           flex: 4,
           child: Row(
             children: [
-              const Flexible(
+              Flexible(
                 child: CustomTextFormField(
-                  name: '',
+                  onChanged: (p0) {
+                    final name = nameController.text.isNotEmpty ? nameController.text : null;
+                    final regdNo = regdNoController.text.isNotEmpty ? regdNoController.text : null;
+                    final year = rollNoController.text.isNotEmpty ? rollNoController.text : null;
+                    widget.onSearch(name, regdNo, year);
+                  },
+                  name: 'name',
+                  controller: nameController,
                   hintText: 'Search by name',
                 ),
               ),
               8.widthBox,
-              const Flexible(
+              Flexible(
                 child: CustomTextFormField(
-                  name: '',
+                  onChanged: (p0) {
+                    final name = nameController.text.isNotEmpty ? nameController.text : null;
+                    final regdNo = regdNoController.text.isNotEmpty ? regdNoController.text : null;
+                    final year = rollNoController.text.isNotEmpty ? rollNoController.text : null;
+                    widget.onSearch(name, regdNo, year);
+                  },
+                  name: 'regd-no',
+                  controller: regdNoController,
                   hintText: 'Search by Regd. No',
                 ),
               ),
               8.widthBox,
-              const Flexible(
+              Flexible(
                 child: CustomTextFormField(
-                  name: '',
-                  hintText: 'Search by Year',
+                  onChanged: (p0) {
+                    final name = nameController.text.isNotEmpty ? nameController.text : null;
+                    final regdNo = regdNoController.text.isNotEmpty ? regdNoController.text : null;
+                    final year = rollNoController.text.isNotEmpty ? rollNoController.text : null;
+                    widget.onSearch(name, regdNo, year);
+                  },
+                  name: 'roll-no',
+                  controller: rollNoController,
+                  hintText: 'Search by Roll no.',
                 ),
               ),
             ],
@@ -51,7 +85,12 @@ class SearchStudentRowWidget extends StatelessWidget {
               color: AppColors.grey200,
             ),
             labelText: 'Search',
-            onPressed: () {},
+            onPressed: () {
+              final name = nameController.text.isNotEmpty ? nameController.text : null;
+              final regdNo = regdNoController.text.isNotEmpty ? regdNoController.text : null;
+              final year = rollNoController.text.isNotEmpty ? rollNoController.text : null;
+              widget.onSearch(name, regdNo, year);
+            },
           ),
         ),
       ],
