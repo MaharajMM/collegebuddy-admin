@@ -1,9 +1,12 @@
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/padding/app_padding.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
+import 'package:college_buddy_admin/features/notice/controller/notice_pod.dart';
 import 'package:college_buddy_admin/features/notice/view/widget/notice_data_table.dart';
 import 'package:college_buddy_admin/features/notice/view/widget/search_notice_widget.dart';
+import 'package:college_buddy_admin/shared/riverpod_ext/asynvalue_easy_when.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class PrimaryNoticeBody extends StatelessWidget {
@@ -35,17 +38,28 @@ class PrimaryNoticeBody extends StatelessWidget {
               20.heightBox,
               const SearchNoticeWidget(),
               20.heightBox,
-              Flexible(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                      border: Border.all(color: AppColors.grey300, width: 2),
-                    ),
-                    child: const NoticeDataTable(),
-                  ),
-                ),
+              Consumer(
+                builder: (context, ref, child) {
+                  final noticeAsync = ref.watch(noticesProvider);
+                  return noticeAsync.easyWhen(
+                    data: (noticeModel) {
+                      final allNoticeList = noticeModel.data;
+                      return Flexible(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(color: AppColors.grey300, width: 2),
+                            ),
+                            child: NoticeDataTable(allNotice: allNoticeList!),
+                          ),
+                        ),
+                      );
+                    },
+                    loadingWidget: () => const Center(child: CircularProgressIndicator()),
+                  );
+                },
               ),
             ],
           ),

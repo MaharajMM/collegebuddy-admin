@@ -6,5 +6,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final studentsProvider = FutureProvider.autoDispose<StudentsModel>((ref) async {
   final result =
       await ref.watch(studentsRepoProvider).getAllStudents(cancelToken: ref.cancelToken());
-  return result.when((attendanceModel) => attendanceModel, (error) => throw (error.errorMessage));
+  return result.when((studentsModel) => studentsModel, (error) => throw (error.errorMessage));
 });

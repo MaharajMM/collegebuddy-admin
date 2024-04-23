@@ -8,4 +8,5 @@ class AppUrls {
   static const String devBaseUrl = Env.developmentBaseUrl;
   static const String studentApiURL = "/student";
   static const String addstudentURL = "$studentApiURL/register";
+  static const String noticeApiURL = "/notice";
 }

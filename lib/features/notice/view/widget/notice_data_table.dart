@@ -1,13 +1,14 @@
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
-import 'package:college_buddy_admin/data/models/notice_model.dart';
-import 'package:college_buddy_admin/data/values/notice_value.dart';
+import 'package:college_buddy_admin/data/models/notice/all_notice_model.dart';
 import 'package:college_buddy_admin/shared/utils/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NoticeDataTable extends StatelessWidget {
-  const NoticeDataTable({super.key});
+  final List<NoticeData> allNotice;
+  const NoticeDataTable({super.key, required this.allNotice});
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +31,17 @@ class NoticeDataTable extends StatelessWidget {
     }
 
     List<DataRow> getRows(
-      List<NoticeModel> notice,
+      List<NoticeData> notice,
       BuildContext context,
     ) {
-      return notice.map((NoticeModel notice) {
+      return notice.map((NoticeData notice) {
+        var dateValue = DateFormat("yyyy-MM-ddTHH:mm:ssZ").parseUTC(notice.date!).toLocal();
+        // Format date
+        String formattedDate = DateFormat('MMM dd, yyyy').format(dateValue);
         final cells = [
-          notice.date,
-          notice.noticeTitle,
-          notice.downloadURL,
+          formattedDate,
+          notice.title,
+          notice.downloadUrl,
         ];
 
         return DataRow(
@@ -48,7 +52,7 @@ class NoticeDataTable extends StatelessWidget {
               return DataCell(
                 ElevatedButton(
                   onPressed: () {
-                    launchUrl(Uri.parse(notice.downloadURL));
+                    launchUrl(Uri.parse(notice.downloadUrl!));
                   },
                   child: Text(
                     'Download',
@@ -64,7 +68,7 @@ class NoticeDataTable extends StatelessWidget {
             } else {
               return DataCell(
                 Text(
-                  model,
+                  model.toString(),
                   textAlign: TextAlign.center,
                   style: GoogleFonts.ubuntu(
                     fontSize: 14,
