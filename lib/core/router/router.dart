@@ -38,6 +38,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: BookRequestsRoute.page, path: 'book-requests'),
         AutoRoute(page: BookShelfRoute.page, path: 'book-shelf'),
         AutoRoute(page: AddBooksRoute.page, path: 'add-books'),
+        AutoRoute(page: AccountRoute.page, path: 'accounts'),
+        AutoRoute(page: AttendanceRoute.page, path: 'attendance'),
+        AutoRoute(page: ExamRoute.page, path: 'exam'),
+        AutoRoute(page: NotesRoute.page, path: 'Notes'),
       ],
     ),
   ];
