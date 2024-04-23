@@ -15,7 +15,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(
       page: LoginRoute.page,
       path: '/login',
-      // initial: true,
+      initial: true,
     ),
     AutoRoute(
       page: AddStudentRoute.page,
@@ -27,7 +27,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(
       page: AdminRoute.page,
       path: '/',
-      initial: true,
+      // initial: true,
       children: [
         RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(page: DashboardRoute.page, path: 'dashboard'),

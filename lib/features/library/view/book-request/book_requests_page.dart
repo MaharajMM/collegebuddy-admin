@@ -41,7 +41,7 @@ class _BookRequestViewState extends State<BookRequestView> {
             ),
             child: const HeaderWidget(),
           ),
-          Flexible(
+          Expanded(
             child: SingleChildScrollView(
               child: Padding(
                 padding: AppPadding.kQuatHalfPad,
@@ -55,10 +55,157 @@ class _BookRequestViewState extends State<BookRequestView> {
                         const BookRequestTittle().pOnly(bottom: 20),
                         const BookRequestStatus().pOnly(right: 20)
                       ],
-                    ),
-                    
-
-
+                    ).pOnly(bottom: 20),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.kErrorColor.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              children: [
+                                const AppSmallText(text: 'Pending Requests'),
+                                ListView.builder(
+                                  physics:
+                                      const AlwaysScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  primary: true,
+                                  itemCount: 15,
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      tileColor: AppColors.kErrorColor
+                                          .withOpacity(0.5),
+                                      title: Text('Column 1, Item $index'),
+                                    ).p12();
+                                  },
+                                ),
+                              ],
+                            ),
+                          ).p12(),
+                        ),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.kSuccessColor.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              children: [
+                                const AppSmallText(text: 'Verified Requests'),
+                                ListView.builder(
+                                  physics:
+                                      const AlwaysScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  primary: true,
+                                  itemCount: 15,
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      tileColor: AppColors.kSuccessColor
+                                          .withOpacity(0.5),
+                                      title: Text('Column 2, Item $index'),
+                                    ).p12();
+                                  },
+                                ),
+                              ],
+                            ),
+                          ).p12(),
+                        ),
+                      ],
+                    )
+                    // Row(
+                    //   children: [
+                    //     Expanded(
+                    //       child: Column(
+                    //         children: [
+                    //           ListView.separated(
+                    //             separatorBuilder: (context, index) =>
+                    //                 10.heightBox,
+                    //             itemCount: 15,
+                    //             shrinkWrap: true,
+                    //             physics: const AlwaysScrollableScrollPhysics(),
+                    //             primary: true,
+                    //             itemBuilder: (
+                    //               context,
+                    //               index,
+                    //             ) {
+                    //               return ListTile(
+                    //                 shape: RoundedRectangleBorder(
+                    //                   borderRadius: BorderRadius.circular(10),
+                    //                 ),
+                    //                 tileColor:
+                    //                     AppColors.kErrorColor.withOpacity(0.5),
+                    //                 title: const AppSmallText(
+                    //                   textAlign: TextAlign.start,
+                    //                   text: 'Student Name',
+                    //                   fontSize: 16,
+                    //                   fontWeight: FontWeight.w600,
+                    //                 ),
+                    //                 subtitle: const AppSmallText(
+                    //                   textAlign: TextAlign.start,
+                    //                   text: 'Class Name',
+                    //                   fontSize: 14,
+                    //                   fontWeight: FontWeight.w400,
+                    //                 ),
+                    //                 trailing: const AppSmallText(
+                    //                   textAlign: TextAlign.start,
+                    //                   text: 'Status',
+                    //                   fontSize: 14,
+                    //                   fontWeight: FontWeight.w400,
+                    //                 ),
+                    //               );
+                    //             },
+                    //           ).p12(),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //     Expanded(
+                    //       child: Column(
+                    //         children: [
+                    //           ListView.separated(
+                    //             separatorBuilder: (context, index) =>
+                    //                 10.heightBox,
+                    //             itemCount: 15,
+                    //             shrinkWrap: true,
+                    //             physics: const AlwaysScrollableScrollPhysics(),
+                    //             primary: true,
+                    //             itemBuilder: (
+                    //               context,
+                    //               index,
+                    //             ) {
+                    //               return ListTile(
+                    //                 shape: RoundedRectangleBorder(
+                    //                   borderRadius: BorderRadius.circular(10),
+                    //                 ),
+                    //                 tileColor: AppColors.kSuccessColor
+                    //                     .withOpacity(0.5),
+                    //                 title: const AppSmallText(
+                    //                   textAlign: TextAlign.start,
+                    //                   text: 'Student Name',
+                    //                   fontSize: 16,
+                    //                   fontWeight: FontWeight.w600,
+                    //                 ),
+                    //                 subtitle: const AppSmallText(
+                    //                   textAlign: TextAlign.start,
+                    //                   text: 'Class Name',
+                    //                   fontSize: 14,
+                    //                   fontWeight: FontWeight.w400,
+                    //                 ),
+                    //                 trailing: const AppSmallText(
+                    //                   textAlign: TextAlign.start,
+                    //                   text: 'Status',
+                    //                   fontSize: 14,
+                    //                   fontWeight: FontWeight.w400,
+                    //                 ),
+                    //               );
+                    //             },
+                    //           ).p12(),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ],
+                    // )
                   ],
                 ),
               ),
@@ -69,8 +216,6 @@ class _BookRequestViewState extends State<BookRequestView> {
     );
   }
 }
-
-
 
 class BookRequestTittle extends StatelessWidget {
   const BookRequestTittle({
