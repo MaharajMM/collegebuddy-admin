@@ -12,6 +12,7 @@ class AppUrls {
     final apiUrl = '$noticeApiURL/$noticeId';
     return apiUrl;
   }
-  // static const String addAlllibraryDetailsURL = "$studentApiURL/register";
+
+  static const String libraryApiUrl = "admin/library";
   // static const String addlibraryDetailsURL = "$studentApiURL/register";
 }
