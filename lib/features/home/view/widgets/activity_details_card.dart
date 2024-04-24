@@ -54,12 +54,12 @@ class ActivityDetailsCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AppSmallText(
-                    text: 'Students',
+                  AppSmallText(
+                    text: index == 0 ? 'Students' : 'Teachers',
                     color: AppColors.grey400,
                   ).pOnly(bottom: 5),
-                  const AppSmallText(
-                    text: '2.25K',
+                  AppSmallText(
+                    text: index == 0 ? '2.25K' : '90',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   )
