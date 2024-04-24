@@ -13,6 +13,6 @@ class AppUrls {
     return apiUrl;
   }
 
-  static const String libraryApiUrl = "admin/library";
+  static const String libraryApiUrl = "/admin/library";
   // static const String addlibraryDetailsURL = "$studentApiURL/register";
 }
