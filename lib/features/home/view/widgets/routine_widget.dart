@@ -37,7 +37,7 @@ class RoutineAndLibraryWidget extends StatelessWidget {
                         children: [
                           const Flexible(
                             child: DropDownButtonField(
-                              dropDownItem: ['1', '2', '3'],
+                              dropDownItem: ['1', '2', '3', '4', '5'],
                               name: '',
                               hintText: 'Select from day',
                             ),
@@ -45,17 +45,30 @@ class RoutineAndLibraryWidget extends StatelessWidget {
                           8.widthBox,
                           const Flexible(
                             child: DropDownButtonField(
-                              dropDownItem: ['1', '2', '3'],
+                              dropDownItem: [
+                                '1',
+                                '2',
+                                '3',
+                                '4',
+                                '5',
+                                '6',
+                                '7',
+                                '8',
+                                '9',
+                                '10',
+                                '11',
+                                '12'
+                              ],
                               name: '',
-                              hintText: 'Select from day',
+                              hintText: 'from Month',
                             ),
                           ),
                           8.widthBox,
                           const Flexible(
                             child: DropDownButtonField(
-                              dropDownItem: ['1', '2', '3'],
+                              dropDownItem: ['2020', '2021', '2022', '2023', '2024'],
                               name: '',
-                              hintText: 'Select from day',
+                              hintText: 'from Year',
                             ),
                           ),
                           20.widthBox,
@@ -91,11 +104,11 @@ class RoutineAndLibraryWidget extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                       ),
-                      Icon(
-                        Icons.more_vert_rounded,
+                      AppSmallText(
+                        text: 'View all',
+                        fontSize: 12,
                         color: AppColors.grey400,
-                        size: 20,
-                      )
+                      ),
                     ],
                   ),
                   12.heightBox,
@@ -111,45 +124,65 @@ class RoutineAndLibraryWidget extends StatelessWidget {
                           color: AppColors.kSecondaryBgColor,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
+                            Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                color: AppColors.green100.withOpacity(0.4),
+                                borderRadius: AppBorder.kHalfCurve,
+                              ),
+                              child: const Icon(
+                                Icons.calendar_month_sharp,
+                                color: AppColors.green500,
+                                size: 30,
+                              ),
+                            ),
+                            12.widthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.green100.withOpacity(0.4),
-                                    borderRadius: AppBorder.kHalfCurve,
-                                  ),
-                                  child: const Icon(
-                                    Icons.calendar_month_sharp,
-                                    color: AppColors.green500,
-                                    size: 30,
-                                  ),
-                                ),
-                                12.widthBox,
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const AppSmallText(
-                                      text: 'CSE',
+                                switch (index) {
+                                  0 => const AppSmallText(
+                                      text: 'Introduction to CS',
                                     ).pOnly(bottom: 5),
-                                    const AppSmallText(
-                                      text: '302 books',
+                                  1 => const AppSmallText(
+                                      text: 'Data Structures and Algorithms',
+                                    ).pOnly(bottom: 5),
+                                  2 => const AppSmallText(
+                                      text: 'The Great Gatsby',
+                                    ).pOnly(bottom: 5),
+                                  3 => const AppSmallText(
+                                      text: 'Introduction to Computer',
+                                    ).pOnly(bottom: 5),
+                                  int() => throw UnimplementedError(),
+                                },
+                                switch (index) {
+                                  0 => const AppSmallText(
+                                      text: '2 books',
                                       fontSize: 12,
                                       color: AppColors.grey400,
                                     ),
-                                  ],
-                                ),
+                                  1 => const AppSmallText(
+                                      text: '1 book',
+                                      fontSize: 12,
+                                      color: AppColors.grey400,
+                                    ),
+                                  2 => const AppSmallText(
+                                      text: '1 book',
+                                      fontSize: 12,
+                                      color: AppColors.grey400,
+                                    ),
+                                  3 => const AppSmallText(
+                                      text: '1 book',
+                                      fontSize: 12,
+                                      color: AppColors.grey400,
+                                    ),
+                                  int() => throw UnimplementedError(),
+                                },
                               ],
                             ),
-                            const AppSmallText(
-                              text: 'View all',
-                              fontSize: 12,
-                              color: AppColors.grey400,
-                            )
                           ],
                         ),
                       );

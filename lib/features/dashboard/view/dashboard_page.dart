@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:college_buddy_admin/const/colors/app_colors.dart';
 import 'package:college_buddy_admin/const/padding/app_padding.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
-import 'package:college_buddy_admin/features/home/view/sub-screen/dashboard_widget.dart';
+import 'package:college_buddy_admin/features/dashboard/widgets/dashboard_widget.dart';
 import 'package:college_buddy_admin/shared/widget/cache_image_network_widget.dart';
 import 'package:college_buddy_admin/shared/widget/custom_text_formfield.dart';
 import 'package:flutter/material.dart';
@@ -80,8 +80,7 @@ class DashboardView extends StatelessWidget {
                       const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppSmallText(
-                              text: 'Maharaj M M', fontWeight: FontWeight.bold),
+                          AppSmallText(text: 'Maharaj M M', fontWeight: FontWeight.bold),
                           AppSmallText(
                             text: 'Admin',
                             fontWeight: FontWeight.normal,
