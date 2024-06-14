@@ -1,4 +1,5 @@
 import 'package:college_buddy_admin/bootstrap.dart';
+import 'package:college_buddy_admin/const/env/env.dart';
 import 'package:college_buddy_admin/shared/api_client/dio/bad_certificate_fixer.dart';
 import 'package:college_buddy_admin/shared/api_client/dio/default_api_interceptor.dart';
 import 'package:college_buddy_admin/shared/api_client/dio/default_time_response_interceptor.dart';
@@ -13,7 +14,7 @@ import 'package:talker_dio_logger/talker_dio_logger.dart';
 final dioProvider = Provider.autoDispose<Dio>(
   (ref) {
     final dio = Dio();
-    dio.options.baseUrl = 'https://randomuser.me/api/';
+    dio.options.baseUrl = Env.developmentBaseUrl;
     if (kDebugMode) {
       dio.interceptors.add(TimeResponseInterceptor());
       dio.interceptors.add(FormDataInterceptor());

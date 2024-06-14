@@ -1,15 +1,24 @@
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
 import 'package:college_buddy_admin/shared/widget/custom_text_formfield.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class StudentDetailsField extends StatelessWidget {
   final String hintText;
   final String title;
   final String name;
-  const StudentDetailsField(
-      {super.key, required this.hintText, required this.name, required this.title});
+  final bool isSuffixIcon;
+  final VoidCallback? onTap;
+  final TextEditingController? noticeDateController;
+  const StudentDetailsField({
+    super.key,
+    required this.hintText,
+    required this.name,
+    required this.title,
+    this.isSuffixIcon = false,
+    this.onTap,
+    this.noticeDateController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +38,12 @@ class StudentDetailsField extends StatelessWidget {
         Expanded(
           flex: 2,
           child: CustomTextFormField(
+            controller: noticeDateController,
+            onTap: onTap,
             hintText: hintText,
             name: name,
             islabelText: false,
+            sufixIcon: isSuffixIcon ? const Icon(Icons.calendar_month) : null,
           ),
         )
         // .pOnly(right: 400),

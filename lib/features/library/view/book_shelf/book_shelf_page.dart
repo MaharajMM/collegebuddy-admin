@@ -8,7 +8,7 @@ import 'package:college_buddy_admin/data/models/user_model.dart';
 import 'package:college_buddy_admin/data/values/user_vlaue.dart';
 import 'package:college_buddy_admin/features/home/view/widgets/header_widget.dart';
 import 'package:college_buddy_admin/features/library/view/book_shelf/widgets/search_books.dart';
-import 'package:college_buddy_admin/features/students/widgets/text_dialog_widget.dart';
+import 'package:college_buddy_admin/features/students/all_students/widgets/text_dialog_widget.dart';
 import 'package:college_buddy_admin/shared/utils/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,8 +42,7 @@ class _BooksShelfViewState extends State<BooksShelfView> {
         children: [
           Container(
             decoration: BoxDecoration(
-              border:
-                  const Border(bottom: BorderSide(color: AppColors.grey300)),
+              border: const Border(bottom: BorderSide(color: AppColors.grey300)),
               color: AppColors.green100.withOpacity(0.1),
             ),
             child: const HeaderWidget(),
@@ -64,8 +63,7 @@ class _BooksShelfViewState extends State<BooksShelfView> {
                           fontSize: 24,
                           fontWeight: FontWeight.w600,
                         ),
-                        AppSmallText(
-                            text: 'Find any books from the current  shelf')
+                        AppSmallText(text: 'Find any books from the current  shelf')
                       ],
                     ).pOnly(bottom: 20),
                     const SearchBooks(),
@@ -76,8 +74,7 @@ class _BooksShelfViewState extends State<BooksShelfView> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12.0),
-                            border:
-                                Border.all(color: AppColors.grey300, width: 2),
+                            border: Border.all(color: AppColors.grey300, width: 2),
                           ),
                           child: buildDataTable(context),
                         ),
@@ -123,10 +120,8 @@ class _BooksShelfViewState extends State<BooksShelfView> {
       sortAscending: true,
       dividerThickness: 1,
       showBottomBorder: true,
-      headingTextStyle:
-          const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-      headingRowColor:
-          MaterialStateProperty.resolveWith((states) => AppColors.green400),
+      headingTextStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+      headingRowColor: MaterialStateProperty.resolveWith((states) => AppColors.green400),
       columnSpacing: 100,
       dataRowMinHeight: 30,
     );

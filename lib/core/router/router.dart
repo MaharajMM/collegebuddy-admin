@@ -15,7 +15,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(
       page: LoginRoute.page,
       path: '/login',
-      // initial: true,
+      initial: true,
     ),
     AutoRoute(
       page: AddStudentRoute.page,
@@ -27,7 +27,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(
       page: AdminRoute.page,
       path: '/',
-      initial: true,
+      // initial: true,
       children: [
         RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(page: DashboardRoute.page, path: 'dashboard'),
@@ -38,6 +38,12 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: BookRequestsRoute.page, path: 'book-requests'),
         AutoRoute(page: BookShelfRoute.page, path: 'book-shelf'),
         AutoRoute(page: AddBooksRoute.page, path: 'add-books'),
+        AutoRoute(page: AccountRoute.page, path: 'accounts'),
+        AutoRoute(page: AttendanceRoute.page, path: 'attendance'),
+        AutoRoute(page: ExamRoute.page, path: 'exam'),
+        AutoRoute(page: NotesRoute.page, path: 'Notes'),
+        AutoRoute(page: AddNoticeRoute.page, path: 'add-notices'),
+        AutoRoute(page: EditNoticeRoute.page, path: 'edit-notices'),
       ],
     ),
   ];

@@ -24,9 +24,12 @@ class SideMenuData {
       label: 'Library',
       destination: const LibraryRoute(),
     ),
-    // MenuModel(icon: Icons.account_balance_outlined, label: 'Account'),
-    // MenuModel(icon: Icons.photo_filter_sharp, label: 'Attendace'),
-    // MenuModel(icon: Icons.file_present_outlined, label: 'Notes'),
+    MenuModel(
+        icon: Icons.account_balance_outlined, label: 'Account', destination: const AccountRoute()),
+    MenuModel(
+        icon: Icons.photo_filter_sharp, label: 'Attendace', destination: const AttendanceRoute()),
+    MenuModel(icon: Icons.file_present_outlined, label: 'Notes', destination: const NotesRoute()),
+    MenuModel(icon: Icons.school_rounded, label: 'Exam', destination: const ExamRoute()),
     MenuModel(
       icon: Icons.file_open_outlined,
       label: 'Notice',

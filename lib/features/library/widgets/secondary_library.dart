@@ -1,10 +1,8 @@
 import 'package:college_buddy_admin/const/padding/app_padding.dart';
 import 'package:college_buddy_admin/const/textstyle/app_small_text.dart';
-import 'package:college_buddy_admin/features/library/widgets/borrowed_books.dart';
 import 'package:college_buddy_admin/features/library/widgets/library_tabs_widget.dart';
 import 'package:college_buddy_admin/features/library/widgets/monthly_status_widget.dart';
 import 'package:college_buddy_admin/features/library/widgets/popular_books.dart';
-import 'package:college_buddy_admin/features/library/widgets/total_summary_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -33,20 +31,19 @@ class SecondaryLibraryBody extends StatelessWidget {
               Flexible(
                 child: Row(
                   children: [
-                    const TotalSummaryCard().h(500).w(1000),
+                    const PopularBooksCard().w(1050).h(500),
                     20.widthBox,
                     const MonthlySummaryCard().h(500).w(400),
                   ],
                 ),
               ),
               20.heightBox,
-              Row(
-                children: [
-                  const PopularBooksCard().w(1050).h(400),
-                  20.widthBox,
-                  const MostBorrowedBooks().h(400).w(350),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     20.widthBox,
+              //     const MostBorrowedBooks().h(400).w(350),
+              //   ],
+              // ),
             ],
           ),
         ),

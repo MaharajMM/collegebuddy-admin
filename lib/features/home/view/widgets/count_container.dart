@@ -57,39 +57,67 @@ class CountContainer extends StatelessWidget {
               ],
             ),
             8.heightBox,
-            const AppSmallText(
-              text: 'February 2024',
-            ).pOnly(bottom: 5),
-            const AppSmallText(
-              text: 'Your february class routine is here',
-              fontSize: 12,
-              color: AppColors.grey400,
-            ),
-            8.heightBox,
-            Flexible(
-              child: AppPrimaryButton(
-                fontColor: AppColors.kPrimaryTextColor,
-                labelText: 'Download Routin (pdf)',
-                onPressed: () {},
-                freeSize: true,
-                borderRadius: AppBorder.kQuatCurve,
-                size: const Size(double.infinity, 35),
-                fontWeight: FontWeight.w500,
-              ),
-            )
+            switch (index) {
+              0 => Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const AppSmallText(
+                        text: 'February 2024',
+                      ).pOnly(bottom: 5),
+                      const AppSmallText(
+                        text: 'Your february class routine is here',
+                        fontSize: 12,
+                        color: AppColors.grey400,
+                      ),
+                      8.heightBox,
+                      Flexible(
+                        child: AppPrimaryButton(
+                          fontColor: AppColors.kPrimaryTextColor,
+                          labelText: 'Download (pdf)',
+                          onPressed: () {},
+                          freeSize: true,
+                          borderRadius: AppBorder.kQuatCurve,
+                          size: const Size(double.infinity, 35),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              1 => Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const AppSmallText(
+                        text: 'March 2024',
+                      ).pOnly(bottom: 5),
+                      const AppSmallText(
+                        text: 'Your march class routine is here',
+                        fontSize: 12,
+                        color: AppColors.grey400,
+                      ),
+                      8.heightBox,
+                      Flexible(
+                        child: AppPrimaryButton(
+                          fontColor: AppColors.kPrimaryTextColor,
+                          labelText: 'Download (pdf)',
+                          onPressed: () {},
+                          freeSize: true,
+                          borderRadius: AppBorder.kQuatCurve,
+                          size: const Size(double.infinity, 35),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              int() => throw UnimplementedError(),
+            },
           ],
         ),
-
-        // Row(
-        //   children: [
-
-        //     const Icon(
-        //       Icons.people,
-        //       size: 40,
-        //       color: AppColors.purple500,
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
