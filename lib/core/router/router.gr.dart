@@ -9,28 +9,43 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i20;
-import 'package:college_buddy_admin/features/home/view/home_page.dart' as _i13;
-import 'package:college_buddy_admin/features/login/view/login_page.dart' deferred as _i15;
-import 'package:college_buddy_admin/features/settings/view/settings_page.dart' as _i18;
-import 'package:college_buddy_admin/data/models/notice/all_notice_model.dart' as _i22;
-import 'package:college_buddy_admin/features/account/view/account_page.dart' as _i1;
-import 'package:college_buddy_admin/features/add_notice/view/add_notice_page.dart' as _i3;
+import 'package:college_buddy_admin/data/models/notice/all_notice_model.dart'
+    as _i22;
+import 'package:college_buddy_admin/features/account/view/account_page.dart'
+    as _i1;
+import 'package:college_buddy_admin/features/add_notice/view/add_notice_page.dart'
+    as _i3;
 import 'package:college_buddy_admin/features/admin/view/admin_page.dart' as _i5;
-import 'package:college_buddy_admin/features/attendance/view/attendance_page.dart' as _i6;
-import 'package:college_buddy_admin/features/counter/view/counter_page.dart' deferred as _i9;
-import 'package:college_buddy_admin/features/dashboard/view/dashboard_page.dart' as _i10;
-import 'package:college_buddy_admin/features/edit_notice/view/edit_notice_page.dart' as _i11;
+import 'package:college_buddy_admin/features/attendance/view/attendance_page.dart'
+    as _i6;
+import 'package:college_buddy_admin/features/counter/view/counter_page.dart'
+    deferred as _i9;
+import 'package:college_buddy_admin/features/dashboard/view/dashboard_page.dart'
+    as _i10;
+import 'package:college_buddy_admin/features/edit_notice/view/edit_notice_page.dart'
+    as _i11;
 import 'package:college_buddy_admin/features/exam/view/exam_page.dart' as _i12;
+import 'package:college_buddy_admin/features/home/view/home_page.dart' as _i13;
 import 'package:college_buddy_admin/features/library/view/book-request/book_requests_page.dart'
     as _i7;
-import 'package:college_buddy_admin/features/library/view/book_shelf/add_books_page.dart' as _i2;
-import 'package:college_buddy_admin/features/library/view/book_shelf/book_shelf_page.dart' as _i8;
-import 'package:college_buddy_admin/features/library/view/library_page.dart' as _i14;
-import 'package:college_buddy_admin/features/notes/view/notes_page.dart' as _i16;
-import 'package:college_buddy_admin/features/notice/view/notice_page.dart' as _i17;
+import 'package:college_buddy_admin/features/library/view/book_shelf/add_books_page.dart'
+    as _i2;
+import 'package:college_buddy_admin/features/library/view/book_shelf/book_shelf_page.dart'
+    as _i8;
+import 'package:college_buddy_admin/features/library/view/library_page.dart'
+    as _i14;
+import 'package:college_buddy_admin/features/login/view/login_page.dart'
+    deferred as _i15;
+import 'package:college_buddy_admin/features/notes/view/notes_page.dart'
+    as _i16;
+import 'package:college_buddy_admin/features/notice/view/notice_page.dart'
+    as _i17;
+import 'package:college_buddy_admin/features/settings/view/settings_page.dart'
+    as _i18;
 import 'package:college_buddy_admin/features/students/add_student_view/view/add_student_page.dart'
     as _i4;
-import 'package:college_buddy_admin/features/students/all_students/view/students_page.dart' as _i19;
+import 'package:college_buddy_admin/features/students/all_students/view/students_page.dart'
+    as _i19;
 import 'package:flutter/material.dart' as _i21;
 
 abstract class $AppRouter extends _i20.RootStackRouter {
@@ -323,7 +338,8 @@ class EditNoticeRoute extends _i20.PageRouteInfo<EditNoticeRouteArgs> {
 
   static const String name = 'EditNoticeRoute';
 
-  static const _i20.PageInfo<EditNoticeRouteArgs> page = _i20.PageInfo<EditNoticeRouteArgs>(name);
+  static const _i20.PageInfo<EditNoticeRouteArgs> page =
+      _i20.PageInfo<EditNoticeRouteArgs>(name);
 }
 
 class EditNoticeRouteArgs {
